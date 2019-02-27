@@ -7,7 +7,7 @@ class EmployeeList extends Component {
             <section className="employees">
             <h3>Here are our employees!</h3>
             {
-                this.props.TacoEemployees.map(employee =>
+                this.props.TacoEmployees.map(employee =>
                     <div key={employee.id}>
                         {employee.name}
                     </div>

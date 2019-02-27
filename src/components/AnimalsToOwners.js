@@ -46,7 +46,7 @@ class AnimalsToOwners extends Component {
                                 // ownerArrays vary in length, makes a div for all available owners
                                 pet.ownerArray.map((owner, index) =>
                                     <div key={index}>
-                                        {owner}
+                                    {owner}
                                     </div>
                                 )
                             }
