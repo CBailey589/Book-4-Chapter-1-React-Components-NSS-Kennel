@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-// import { debug } from 'util';
+import dog from "./DogIcon.png"
+
 class AnimalsToOwners extends Component {
     render() {
         // Since I want to list things on the page by pet, starting with the pet array
@@ -23,7 +24,7 @@ class AnimalsToOwners extends Component {
                         })
                 })
             return obj
-        // the pet "ownerArray" is an array of arrays, this flattens it
+            // the pet "ownerArray" is an array of arrays, this flattens it
         }).map((animalObj) => {
             animalObj.ownerArray = animalObj.ownerArray.flat(2)
             return animalObj
@@ -37,16 +38,17 @@ class AnimalsToOwners extends Component {
                 {/* creates new section per pet */}
                 {
                     petsWithOwners.map(pet =>
-                        <section key={pet.id} className="animal">
+                        <section key={pet.id} className="card">
                             {/*Pet title*/}
                             <h4 >
+                                <img src={dog} className="icon--dog" />
                                 {pet.animal} and {pet.animal.split(" ")[0]}'s owners:
                             </h4>
                             {
                                 // ownerArrays vary in length, makes a div for all available owners
                                 pet.ownerArray.map((owner, index) =>
                                     <div key={index}>
-                                    {owner}
+                                        {owner}
                                     </div>
                                 )
                             }

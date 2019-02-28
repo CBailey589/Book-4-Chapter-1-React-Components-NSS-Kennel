@@ -2,8 +2,9 @@ import { Route } from 'react-router-dom'
 import React, { Component } from "react"
 import LocationList from "./LocationList"
 import EmployeeList from "./EmployeeList"
-import AnimalsToOwners from './AnimalsToOwners';
+import AnimalsToOwners from './animals/AnimalsToOwners';
 import OwnerList from "./OwnerList"
+
 
 class ApplicationViews extends Component {
     state = {
