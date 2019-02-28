@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
-import "bootstrap/dist/css/bootstrap.min.css"
+// import "bootstrap/dist/css/bootstrap.min.css"
 
 
 class NavBar extends Component {
@@ -16,6 +16,9 @@ class NavBar extends Component {
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link" to="/employees">Employees</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-Link" to="/customers">Customers</Link>
                     </li>
                 </ul>
             </nav>
