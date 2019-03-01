@@ -2,19 +2,19 @@ import Settings from "./Settings"
 
 export default Object.create(null, {
     GET: {
-        value: function (array, id) {
+        value: function (id) {
             return fetch(`${Settings.url}/${this.array}/${id}`)
                 .then(r => r.json())
         }
     },
     GETALL: {
-        value: function (array) {
+        value: function () {
             return fetch(`${Settings.url}/${this.array}`)
                 .then(r => r.json())
         }
     },
     DELETE: {
-        value: function(array, id) {
+        value: function(id) {
             return fetch(`${Settings.url}/${this.array}/${id}`,
             {
                 method:"DELETE"
