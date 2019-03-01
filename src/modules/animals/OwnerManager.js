@@ -1,13 +1,14 @@
-import Settings from "../Settings"
+import APIManager from "../utilities/APIManager"
 
 const OwnerManager = {
-    get(id) {
-        return fetch(`${Settings.url}/ownersFromAPI/${id}`)
-            .then(r => r.json())
+    GET(id) {
+        return APIManager.GET("ownersFromAPI", id)
     },
-    getAll() {
-        return fetch(`${Settings.url}/ownersFromAPI`)
-            .then(r => r.json())
+    GETALL() {
+        return APIManager.GETALL("ownersFromAPI")
+    },
+    DELETE(id) {
+        return APIManager.DELETE("ownersFromAPI", id)
     }
 }
 

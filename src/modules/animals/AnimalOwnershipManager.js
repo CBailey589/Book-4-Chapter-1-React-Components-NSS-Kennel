@@ -1,13 +1,11 @@
-import Settings from "../Settings"
+import APIManager from "../utilities/APIManager"
 
 const AnimalOwnershipManager = {
-    get(id) {
-        return fetch(`${Settings.url}/ownershipsFromAPI/${id}`)
-            .then(r => r.json())
+    GET(id) {
+        return APIManager.GET("ownershipsFromAPI", id)
     },
-    getAll() {
-        return fetch(`${Settings.url}/ownershipsFromAPI`)
-            .then(r => r.json())
+    GETALL() {
+        return APIManager.GETALL("ownershipsFromAPI")
     }
 }
 

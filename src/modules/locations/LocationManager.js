@@ -1,13 +1,11 @@
-import Settings from "../Settings"
+import APIManager from "../utilities/APIManager"
 
 const LocationManager = {
-    get(id) {
-        return fetch(`${Settings.url}/locationsFromAPI/${id}`)
-            .then(r => r.json())
+    GET(id) {
+        return APIManager.GET("locationsFromAPI", id)
     },
-    getAll() {
-        return fetch(`${Settings.url}/locationsFromAPI`)
-            .then(r => r.json())
+    GETALL() {
+        return APIManager.GETALL("locationsFromAPI")
     }
 }
 

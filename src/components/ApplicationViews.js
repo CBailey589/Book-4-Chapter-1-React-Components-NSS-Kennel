@@ -21,36 +21,26 @@ class ApplicationViews extends Component {
     }
 
     fireEmployee = (id) => {
-        fetch(`http://localhost:5002/employeesFromAPI/${id}`, {
-            "method": "DELETE"
-        })
-            .then(() => fetch("http://localhost:5002/employeesFromAPI"))
-            .then(r => r.json())
-            .then(employees => this.setState({ employees: employees }))
+        EmployeeManager.DELETE(id)
+            .then(() => EmployeeManager.GETALL())
+            .then(json => this.setState({ employees: json }))
     }
 
     removeCustomer = (id) => {
-        fetch(`http://localhost:5002/ownersFromAPI/${id}`, {
-            "method": "DELETE"
-        })
-        .then(()=> fetch("http://localhost:5002/ownersFromAPI"))
-        .then(r => r.json())
-        .then(owners => this.setState({ owners: owners}))
+        OwnerManager.DELETE(id)
+            .then(() => OwnerManager.GETALL())
+            .then(json => this.setState({ owners: json }))
     }
 
     componentDidMount() {
         const newState = {}
 
-        EmployeeManager.getAll()
-            .then(json => newState.employees = json)
-            LocationManager.getAll()
-            .then(json => newState.locations = json)
-            AnimalManager.getAll()
-            .then(json => newState.animals = json)
-            OwnerManager.getAll()
-            .then(json => newState.owners = json)
-            AnimalOwnershipManager.getAll()
-            .then(json => newState.ownerships = json)
+        let prom1 = Promise.resolve(EmployeeManager.GETALL().then(json => newState.employees = json))
+        let prom2 = Promise.resolve(LocationManager.GETALL().then(json => newState.locations = json))
+        let prom3 = Promise.resolve(AnimalManager.GETALL().then(json => newState.animals = json))
+        let prom4 = Promise.resolve(OwnerManager.GETALL().then(json => newState.owners = json))
+        let prom5 = Promise.resolve(AnimalOwnershipManager.GETALL().then(json => newState.ownerships = json))
+        Promise.all([prom1, prom2, prom3, prom4, prom5])
             .then(() => this.setState(newState))
     }
 

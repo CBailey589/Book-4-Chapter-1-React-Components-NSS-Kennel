@@ -1,13 +1,14 @@
-import Settings from "../Settings"
+import APIManager from "../utilities/APIManager"
 
 const EmployeeManager = {
-    get(id) {
-        return fetch(`${Settings.url}/employeesFromAPI/${id}`)
-            .then(r => r.json())
+    GET(id) {
+        return APIManager.GET("employeesFromAPI", id)
     },
-    getAll() {
-        return fetch(`${Settings.url}/employeesFromAPI`)
-            .then(r => r.json())
+    GETALL() {
+        return APIManager.GETALL("employeesFromAPI")
+    },
+    DELETE(id) {
+        return APIManager.DELETE("employeesFromAPI", id)
     }
 }
 
