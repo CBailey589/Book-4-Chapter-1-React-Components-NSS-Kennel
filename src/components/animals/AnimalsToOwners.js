@@ -41,7 +41,7 @@ class AnimalsToOwners extends Component {
                         <section key={pet.id} className="card">
                             {/*Pet title*/}
                             <h4 >
-                                <img src={dog} className="icon--dog" />
+                                <img src={dog} className="icon--dog" alt="" />
                                 {pet.animal} and {pet.animal.split(" ")[0]}'s owners:
                             </h4>
                             {

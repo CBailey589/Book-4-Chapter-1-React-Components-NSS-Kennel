@@ -1,9 +1,14 @@
 import { Route } from 'react-router-dom'
 import React, { Component } from "react"
-import LocationList from "./LocationList"
-import EmployeeList from "./EmployeeList"
+import LocationList from "./locations/LocationList"
+import EmployeeList from "./employees/EmployeeList"
 import AnimalsToOwners from './animals/AnimalsToOwners';
-import OwnerList from "./OwnerList"
+import OwnerList from "./animals/OwnerList"
+import AnimalManager from "../modules/animals/AnimalManager"
+import EmployeeManager from '../modules/employees/EmployeeManager';
+import LocationManager from '../modules/locations/LocationManager';
+import OwnerManager from '../modules/animals/OwnerManager';
+import AnimalOwnershipManager from '../modules/animals/AnimalOwnershipManager';
 
 
 class ApplicationViews extends Component {
@@ -36,20 +41,15 @@ class ApplicationViews extends Component {
     componentDidMount() {
         const newState = {}
 
-        fetch("http://localhost:5002/employeesFromAPI")
-            .then(r => r.json())
+        EmployeeManager.getAll()
             .then(json => newState.employees = json)
-            .then(() => fetch("http://localhost:5002/locationsFromAPI")
-                .then(r => r.json()))
+            LocationManager.getAll()
             .then(json => newState.locations = json)
-            .then(() => fetch("http://localhost:5002/animalsFromAPI")
-                .then(r => r.json()))
+            AnimalManager.getAll()
             .then(json => newState.animals = json)
-            .then(() => fetch("http://localhost:5002/ownersFromAPI")
-                .then(r => r.json()))
+            OwnerManager.getAll()
             .then(json => newState.owners = json)
-            .then(() => fetch("http://localhost:5002/ownershipsFromAPI")
-                .then(r => r.json()))
+            AnimalOwnershipManager.getAll()
             .then(json => newState.ownerships = json)
             .then(() => this.setState(newState))
     }
