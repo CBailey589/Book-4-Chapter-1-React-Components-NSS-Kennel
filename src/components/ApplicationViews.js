@@ -4,11 +4,11 @@ import LocationList from "./locations/LocationList"
 import EmployeeList from "./employees/EmployeeList"
 import AnimalsToOwners from './animals/AnimalsToOwners';
 import OwnerList from "./animals/OwnerList"
-import AnimalManager from "../modules/animals/AnimalManager"
-import EmployeeManager from '../modules/employees/EmployeeManager';
-import LocationManager from '../modules/locations/LocationManager';
-import OwnerManager from '../modules/animals/OwnerManager';
-import AnimalOwnershipManager from '../modules/animals/AnimalOwnershipManager';
+import AnimalManager from "../modules/resourceManagers/AnimalManager"
+import EmployeeManager from '../modules/resourceManagers/EmployeeManager';
+import LocationManager from '../modules/resourceManagers/LocationManager';
+import OwnerManager from '../modules/resourceManagers/OwnerManager';
+import AnimalOwnershipManager from '../modules/resourceManagers/AnimalOwnershipManager';
 
 
 class ApplicationViews extends Component {

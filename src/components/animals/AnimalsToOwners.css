@@ -1,0 +1,32 @@
+.animalsToOwners {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly
+}
+.animalsToOwners h3{
+    width: 100%;
+}
+
+.card{
+    border: 1px solid blue;
+    background-color: lightblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    margin: 5px 0px;
+}
+.card img{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    width:85%;
+
+}
+.card h4{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-self: center;
+    font-size: .9em;
+}
