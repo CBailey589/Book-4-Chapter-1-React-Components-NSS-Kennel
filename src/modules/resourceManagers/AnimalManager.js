@@ -1,13 +1,9 @@
 import APIManager from "../utilities/APIManager"
 
-const AnimalManager = {
-    GET(id) {
-        return APIManager.GET("animalsFromAPI", id)
-    },
-    GETALL() {
-        return APIManager.GETALL("animalsFromAPI")
+const AnimalManager = Object.create(APIManager, {
+    array: {
+        value: "animalsFromAPI"
     }
-}
-
+})
 
 export default AnimalManager

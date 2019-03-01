@@ -1,13 +1,9 @@
 import APIManager from "../utilities/APIManager"
 
-const LocationManager = {
-    GET(id) {
-        return APIManager.GET("locationsFromAPI", id)
-    },
-    GETALL() {
-        return APIManager.GETALL("locationsFromAPI")
+const LocationManager = Object.create(APIManager, {
+    array: {
+        value: "locationsFromAPI"
     }
-}
-
+})
 
 export default LocationManager

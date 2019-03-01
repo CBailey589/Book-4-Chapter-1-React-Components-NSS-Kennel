@@ -1,13 +1,9 @@
 import APIManager from "../utilities/APIManager"
 
-const AnimalOwnershipManager = {
-    GET(id) {
-        return APIManager.GET("ownershipsFromAPI", id)
-    },
-    GETALL() {
-        return APIManager.GETALL("ownershipsFromAPI")
+const AnimalOwnershipManager = Object.create(APIManager, {
+    array: {
+        value: "ownershipsFromAPI"
     }
-}
-
+})
 
 export default AnimalOwnershipManager
