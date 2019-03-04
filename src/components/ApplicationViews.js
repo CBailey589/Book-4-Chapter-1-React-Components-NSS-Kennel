@@ -5,6 +5,7 @@ import EmployeeList from "./employees/EmployeeList"
 import AnimalsToOwners from './animals/AnimalsToOwners';
 import OwnerList from "./animals/OwnerList"
 import AnimalManager from "../modules/resourceManagers/AnimalManager"
+import AnimalDetail from "./animals/AnimalDetail"
 import EmployeeManager from '../modules/resourceManagers/EmployeeManager';
 import LocationManager from '../modules/resourceManagers/LocationManager';
 import OwnerManager from '../modules/resourceManagers/OwnerManager';
@@ -32,6 +33,14 @@ class ApplicationViews extends Component {
             .then(json => this.setState({ owners: json }))
     }
 
+    removeAnimal = (id) => {
+        return AnimalManager.DELETE(id)
+            .then(() => AnimalManager.GETALL())
+            .then(json => this.setState({ animals: json }))
+    }
+
+
+
     componentDidMount() {
         const newState = {}
 
@@ -51,11 +60,19 @@ class ApplicationViews extends Component {
                     return <LocationList
                         TacoLocations={this.state.locations} />
                 }} />
-                <Route exact path="/animals" render={() => {
+                <Route exact path="/animals" render={(props) => {
                     return <AnimalsToOwners
+                        {...props}
                         TacoAnimals={this.state.animals}
                         TacoOwners={this.state.owners}
-                        TacoOwnerships={this.state.ownerships} />
+                        TacoOwnerships={this.state.ownerships}
+                        removeAnimal={this.removeAnimal} />
+                }} />
+                <Route path="/animals/:animalId(\d+)" render={(props) => {
+                    return <AnimalDetail
+                        {...props}
+                        removeAnimal={this.removeAnimal}
+                        TacoAnimals={this.state.animals} />
                 }} />
                 <Route exact path="/employees" render={() => {
                     return <EmployeeList
@@ -67,7 +84,6 @@ class ApplicationViews extends Component {
                         TacoOwners={this.state.owners}
                         removeCustomer={this.removeCustomer} />
                 }} />
-
             </React.Fragment>
         )
     }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+import { Link } from "react-router-dom"
 import dog from "./DogIcon.png"
-import "./AnimalsToOwners.css"
+import "./Animals.css"
 
 class AnimalsToOwners extends Component {
     render() {
@@ -43,6 +44,11 @@ class AnimalsToOwners extends Component {
                                     </div>
                                 )
                             }
+                            <Link className="nav-link" to={`/animals/${pet.id}`}>Details</Link>
+                            <button
+                            onClick={() => this.props.removeAnimal(pet.id)
+                                .then(() => this.props.history.push("/animals"))}
+                            className="card-link">Delete</button>
                         </section>
                     )
                 }
